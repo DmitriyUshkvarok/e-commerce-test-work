@@ -22,7 +22,7 @@ export default function ProductListView({ products }: { products: Product[] }) {
           contentClassName="flex flex-col gap-4 self-start"
           titleClassName="text-xl"
           descriptionClassName="text-gray-500"
-          footerClassName="w-full justify-end"
+          footerClassName="w-full mt-0 self-start"
         />
       )}
     />

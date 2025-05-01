@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Product } from '@/types/product';
 import Image from 'next/image';
-import AddToCartButton from '@/components/cart/add-to-cart-button';
+import AddToCartButton from '@/components/cart/ui/add-to-cart-button';
 import BackButton from '@/components/ui/back-button';
 
 async function getProductById(id: string): Promise<Product | null> {

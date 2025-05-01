@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { Card, CardHeader, CardContent, CardFooter } from '../ui/card';
-import { Product } from '@/types/product';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { Card, CardHeader, CardContent, CardFooter } from '../ui/card';
+import { Product } from '@/types/product';
 
 type ProductCardProps = {
   product: Product;
@@ -14,6 +14,7 @@ type ProductCardProps = {
   contentClassName?: string;
   footerClassName?: string;
   priceClassName?: string;
+  priceAndLinkWrapper?: string;
 };
 
 export default function ProductCard({
@@ -26,21 +27,20 @@ export default function ProductCard({
   contentClassName,
   footerClassName,
   priceClassName,
+  priceAndLinkWrapper,
 }: ProductCardProps) {
   const placeholder = '/placeholder.png';
   return (
-    <Card className={clsx('flex flex-col', cardClassName)}>
+    <Card className={clsx('flex flex-col h-full', cardClassName)}>
       <CardHeader className={clsx(headerClassName)}>
-        <Image
-          src={product.image?.trim() || placeholder}
-          alt={product.name}
-          width={150}
-          height={150}
-          className={clsx(
-            'w-full h-48 object-cover rounded-md mb-4',
-            imageClassName,
-          )}
-        />
+        <div className="relative w-full aspect-[4/3] mb-4 rounded-md overflow-hidden">
+          <Image
+            src={product.image?.trim() || placeholder}
+            alt={product.name}
+            fill
+            className={clsx('object-cover', imageClassName)}
+          />
+        </div>
       </CardHeader>
       <CardContent className={clsx(contentClassName)}>
         <h2 className={clsx('text-lg font-semibold', titleClassName)}>
@@ -51,7 +51,12 @@ export default function ProductCard({
         </p>
       </CardContent>
       <CardFooter className={clsx('mt-auto', footerClassName)}>
-        <div className="flex justify-between items-center w-full">
+        <div
+          className={clsx(
+            'flex justify-between items-center w-full',
+            priceAndLinkWrapper,
+          )}
+        >
           <p
             className={clsx('font-bold text-[#9d74d7] text-lg', priceClassName)}
           >

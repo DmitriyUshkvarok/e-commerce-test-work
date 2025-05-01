@@ -44,7 +44,14 @@ export function SortableProductGrid({
   // 🧩 Синхронізуємо `items` при зміні `products`, наприклад при пагінації
   useEffect(() => {
     if (savedOrder.length > 0) {
-      setItems(savedOrder);
+      const currentProductIds = products.map((p) => p.id);
+      const orderedIds = savedOrder.filter((id) =>
+        currentProductIds.includes(id),
+      );
+      const unorderedIds = currentProductIds.filter(
+        (id) => !orderedIds.includes(id),
+      );
+      setItems([...orderedIds, ...unorderedIds]); // сохраняем порядок, добавляем новые
     } else {
       setItems(products.map((p) => p.id));
     }

@@ -3,6 +3,9 @@
 import ViewSelector from './ui/view-selector';
 import renderProductView from './render-product';
 import ProductFilter from './ui/product-filter';
+import renderSkeletonView from './ui/render-skeleton';
+import EmptyProductList from './ui/empty-product-list';
+import PaginationControl from './ui/pagination-control';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
 import { setSelector } from '@/redux/slices/viewSelectorSlice';
@@ -10,16 +13,13 @@ import { useFilterParams } from '@/hooks/use-filter-params';
 import { useFilteredProducts } from '@/hooks/use-filtered-products';
 import { getUniqueCategories } from '@/utils/get-unique-categories';
 import { Product } from '@/types/product';
-import renderSkeletonView from './ui/render-skeleton';
-import EmptyProductList from './ui/empty-product-list';
-import PaginationControl from './ui/pagination-control';
 import { usePaginationParams } from '@/hooks/use-pagination-params';
 
 const ITEMS_PER_PAGE = 8;
 
 type ViewType = 'grid' | 'large' | 'list';
 
-export default function ProductList() {
+export default function ProductLayout() {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

@@ -68,7 +68,7 @@ export const products = [
     name: 'SSD Kingston 1TB',
     price: 7599,
     description: 'Швидкий та надійний SSD-диск.',
-    image: '/ssd.jpg',
+    image: '/ssd.webp',
     category: 'Накопичувачі',
   },
   {

@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage'; // localStorage
 
 import { Product } from '@/types/product';
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   quantity: number;
 }
 
