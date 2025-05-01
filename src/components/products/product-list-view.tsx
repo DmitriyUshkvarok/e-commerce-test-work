@@ -16,13 +16,15 @@ export default function ProductListView({ products }: { products: Product[] }) {
         <ProductCard
           key={product.id}
           product={product}
-          imageClassName="w-40 h-40"
-          cardClassName="flex flex-row items-center"
-          headerClassName="w-full max-w-[400px]"
-          contentClassName="flex flex-col gap-4 self-start"
-          titleClassName="text-xl"
-          descriptionClassName="text-gray-500"
-          footerClassName="w-full mt-0 self-start"
+          imageClassName="w-full h-full object-cover"
+          cardClassName="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+          headerClassName="w-full sm:w-40 sm:h-40 shrink-0"
+          contentClassName="flex-1"
+          titleClassName="text-lg sm:text-xl"
+          descriptionClassName="text-gray-500 text-sm"
+          footerClassName="w-full"
+          priceClassName="text-base sm:text-lg"
+          priceAndLinkWrapper="flex sm:flex-col justify-between gap-2 sm:flex-row"
         />
       )}
     />
