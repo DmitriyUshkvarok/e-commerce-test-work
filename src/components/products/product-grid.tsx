@@ -1,12 +1,18 @@
 import { Product } from '@/types/product';
 import ProductCard from './product-card';
+import { SortableProductGrid } from './sortable-wrapper';
 
 export default function ProductGrid({ products }: { products: Product[] }) {
+  const handleReorder = (newOrder: Product[]) => {
+    console.log('Новый порядок:', newOrder);
+  };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {products.map((product) => (
+    <SortableProductGrid
+      products={products}
+      onReorder={handleReorder}
+      renderItem={(product) => (
         <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+      )}
+    />
   );
 }

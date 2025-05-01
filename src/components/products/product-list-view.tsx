@@ -1,10 +1,18 @@
 import { Product } from '@/types/product';
 import ProductCard from './product-card';
+import { SortableProductGrid } from './sortable-wrapper';
 
 export default function ProductListView({ products }: { products: Product[] }) {
+  const handleReorder = (newOrder: Product[]) => {
+    console.log('Новый порядок (list):', newOrder);
+  };
+
   return (
-    <div className="space-y-4">
-      {products.map((product) => (
+    <SortableProductGrid
+      products={products}
+      onReorder={handleReorder}
+      wrapperClassName="space-y-4" // 👈 список вместо сетки
+      renderItem={(product) => (
         <ProductCard
           key={product.id}
           product={product}
@@ -16,7 +24,7 @@ export default function ProductListView({ products }: { products: Product[] }) {
           descriptionClassName="text-gray-500"
           footerClassName="w-full justify-end"
         />
-      ))}
-    </div>
+      )}
+    />
   );
 }

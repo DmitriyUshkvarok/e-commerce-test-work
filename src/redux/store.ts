@@ -10,11 +10,13 @@ import {
 } from 'redux-persist';
 import persistedViewSelectorReducer from './slices/viewSelectorSlice';
 import persistCartReducer from './slices/cartSlice';
+import persistProductOrderReducer from './slices/productOrderSlice';
 
 export const store = configureStore({
   reducer: {
     viewSelector: persistedViewSelectorReducer,
     cart: persistCartReducer,
+    productOrder: persistProductOrderReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
